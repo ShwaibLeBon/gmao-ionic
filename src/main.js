@@ -1,6 +1,43 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import {
+  IonApp, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonicVue,
+  IonRouterOutlet, IonIcon, IonButton,
+} from '@ionic/vue';
+import '@ionic/core/css/ionic.bundle.css'
+import * as allIcons from "ionicons/icons";
+// import { App as CapacitorApp } from '@capacitor/app';
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App)
+  .use(IonicVue)
+  .use(router)
+  .use(store)
+
+const components = {
+  IonApp, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonicVue,
+  IonRouterOutlet, IonIcon, IonButton,
+};
+
+Object.entries(components).forEach(([name, component]) => {
+  app.component(name, component)
+})
+
+app.mixin({
+  methods: {
+    getIcon(name) {
+      return allIcons[name];
+    },
+  },
+  computed:{
+  }
+})
+// CapacitorApp.addListener('backButton', ({canGoBack}) => {
+//   if((!canGoBack) || (window.history.state.back == null)){
+//     CapacitorApp.exitApp();
+//   } else {
+//     window.open(window.history.state.back, "_self")
+//   }
+// });
+app.mount('#app');
