@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import {
   IonApp, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonicVue,
-  IonRouterOutlet, IonIcon, IonButton,
+  IonRouterOutlet, IonIcon, IonButton, IonLabel, IonInput, IonItem, IonCol
 } from '@ionic/vue';
 import '@ionic/core/css/ionic.bundle.css'
 import * as allIcons from "ionicons/icons";
@@ -17,7 +17,7 @@ const app = createApp(App)
 
 const components = {
   IonApp, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonicVue,
-  IonRouterOutlet, IonIcon, IonButton,
+  IonRouterOutlet, IonIcon, IonButton, IonLabel, IonInput, IonItem, IonCol
 };
 
 Object.entries(components).forEach(([name, component]) => {

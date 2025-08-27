@@ -1,6 +1,6 @@
 <template>
   <ion-content class="ion-padding">
-    <h2>Welcome to the Home Page</h2>
+    <h2>Welcome to the ITEMS Page</h2>
   </ion-content>
 </template>
 
