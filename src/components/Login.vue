@@ -58,6 +58,7 @@ export default {
 				.post("https://gmao.amidev.bi/api/oc_assets/login/", data)
 				.then((response) => {
 					this.$store.state.user = response.data;
+					localStorage.setItem("user", JSON.stringify(response.data));
 				})
 				.catch((error) => {
 					console.log("AN ERROR OCCURED : ", error);
