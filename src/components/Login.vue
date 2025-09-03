@@ -1,38 +1,38 @@
 <template>
 	<ion-page>
-		<ion-content>
-			<ion-col class="parent">
-				<div class="hagati">
-					<div class="ion-text-center">
-						<img src="logo.png" alt="" />
-					</div>
-					<ion-item>
-						<ion-label position="floating">Username</ion-label>
-						<ion-input v-model="username"></ion-input>
-					</ion-item>
-					<ion-item expand="block">
-						<ion-label position="floating">Password</ion-label>
-						<ion-input
-							v-model="password"
-							type="password"
-							expand="block"
-						></ion-input>
-					</ion-item>
-					<ion-button
-						expand="block"
-						@click="injira"
-						:disabled="isLoading"
-					>
-						<ion-icon
-							v-if="isLoading"
-							:src="getIcon('refreshOutline')"
-							class="rotate"
-						></ion-icon>
-						Login</ion-button
-					>
+		<!-- <ion-content> -->
+		<ion-col class="parent">
+			<div class="hagati">
+				<div class="ion-text-center">
+					<img src="logo.png" alt="" />
 				</div>
-			</ion-col>
-		</ion-content>
+				<ion-item>
+					<ion-label position="floating">Username</ion-label>
+					<ion-input v-model="username"></ion-input>
+				</ion-item>
+				<ion-item expand="block">
+					<ion-label position="floating">Password</ion-label>
+					<ion-input
+						v-model="password"
+						type="password"
+						expand="block"
+					></ion-input>
+				</ion-item>
+				<ion-button
+					expand="block"
+					@click="injira"
+					:disabled="isLoading"
+				>
+					<ion-icon
+						v-if="isLoading"
+						:src="getIcon('refreshOutline')"
+						class="rotate"
+					></ion-icon>
+					Login</ion-button
+				>
+			</div>
+		</ion-col>
+		<!-- </ion-content> -->
 	</ion-page>
 </template>
 <script>
@@ -59,6 +59,11 @@ export default {
 				.then((response) => {
 					this.$store.state.user = response.data;
 					localStorage.setItem("user", JSON.stringify(response.data));
+
+					this.makeToast(
+						"Success",
+						`Bienvenue ${response.data.fullname}`
+					);
 				})
 				.catch((error) => {
 					console.log("AN ERROR OCCURED : ", error);
